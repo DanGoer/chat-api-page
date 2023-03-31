@@ -20,7 +20,7 @@ function Register() {
 
     // else successful
     console.log(result);
-    return router.push("/admin");
+    return router.push("/chat");
   };
   return (
     <div className="wrapper">
