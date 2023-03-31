@@ -1,12 +1,14 @@
-import { onAuthStateChanged, getAuth } from "firebase/auth";
+import { onAuthStateChanged, getAuth, signOut } from "firebase/auth";
 import firebase_app from "@/firebase/config";
 
 import React, { useContext, useState, createContext, useEffect } from "react";
 
-const auth = getAuth(firebase_app);
+export const auth = getAuth(firebase_app);
 
-export const AuthContext = createContext<React.ReactNode | {}>({});
-
+export const AuthContext = createContext<React.ReactNode | any>({});
+export const logOut = () => {
+  signOut(auth);
+};
 export const useAuthContext = () => useContext(AuthContext);
 
 export const AuthContextProvider: any = ({ children }: any) => {
@@ -22,7 +24,7 @@ export const AuthContextProvider: any = ({ children }: any) => {
       }
       setLoading(false);
     });
-
+    console.log("contextctuser" + user);
     return () => unsubscribe();
   }, []);
 

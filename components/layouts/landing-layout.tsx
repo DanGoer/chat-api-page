@@ -14,4 +14,5 @@ function LandingLayout({ children }: PropsWithChildren) {
     </>
   );
 }
+
 export default LandingLayout;
