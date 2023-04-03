@@ -2,7 +2,6 @@
 import { useState } from "react";
 import signIn from "@/firebase/auth/signin";
 import { useRouter } from "next/navigation";
-import LandingLayout from "@/components/layouts/landing-layout";
 
 function LogIn() {
   const [email, setEmail] = useState("");
@@ -12,14 +11,13 @@ function LogIn() {
   const handleForm = async (event: any) => {
     event.preventDefault();
 
-    const { result, error } = await signIn(email, password);
+    const { error } = await signIn(email, password);
     // todo: error handling
     if (error) {
       return console.log(error);
     }
 
     // else successful
-    console.log(result);
     router.push("/chat");
   };
   return (

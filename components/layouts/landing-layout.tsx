@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from "react";
+import { PropsWithChildren } from "react";
 import Impressum from "../ui/impressum";
 import Navbar from "../ui/navbar";
 import { AuthContextProvider } from "@/context/AuthContext";

@@ -1,4 +1,4 @@
 function Navbar() {
-  return <div>N</div>;
+  return <div>NavBar placeholder</div>;
 }
 export default Navbar;

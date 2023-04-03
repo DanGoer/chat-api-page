@@ -24,7 +24,6 @@ export const AuthContextProvider: any = ({ children }: any) => {
       }
       setLoading(false);
     });
-    console.log("contextctuser" + user);
     return () => unsubscribe();
   }, []);
 

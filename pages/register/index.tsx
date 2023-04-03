@@ -11,7 +11,7 @@ function Register() {
   const handleForm = async (event: any) => {
     event.preventDefault();
 
-    const { result, error } = await signUp(email, password);
+    const { error } = await signUp(email, password);
 
     //todo: error handling
     if (error) {
@@ -19,7 +19,6 @@ function Register() {
     }
 
     // else successful
-    console.log(result);
     return router.push("/chat");
   };
   return (
