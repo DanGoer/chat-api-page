@@ -11,8 +11,8 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const textRequest = "hello";
-  console.log("request" + req.body.text);
-
+  console.log("request" + req.body);
+  res.status(200).json({ answer: req.body });
   /* try {
     const configuration = new Configuration({
       apiKey: process.env.OPENAI_API_KEY,
