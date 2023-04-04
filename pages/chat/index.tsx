@@ -29,7 +29,7 @@ function Chat() {
     });
     const newOutput = await response.json();
     console.log(newOutput);
-    setOutput(newOutput.answer);
+    setOutput(newOutput.answer.content);
   }
 
   return (
