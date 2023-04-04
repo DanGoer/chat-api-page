@@ -10,7 +10,7 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const textRequest = req.body;
+  const { role, message } = req.body;
 
   try {
     const configuration = new Configuration({
@@ -21,7 +21,12 @@ export default async function handler(
 
     const completion = await openai.createChatCompletion({
       model: "gpt-3.5-turbo",
-      messages: [{ role: "user", content: textRequest }],
+      messages: [
+        {
+          role: "user",
+          content: `Verhalte dich dich in der Konversation bitte der Rolle ${role} enstprechend und antworte auf diesen Text: ${message}`,
+        },
+      ],
     });
 
     res.status(200).json({ answer: completion.data.choices[0].message });

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { logOut, useAuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
 import SettingsCard from "@/components/settings/SettingsCard";
+import { useSettingsContext } from "@/context/SettingsContext";
 
 function Chat() {
   const { user } = useAuthContext();
@@ -11,13 +12,15 @@ function Chat() {
   const [text, setText] = useState("");
   const [output, setOutput] = useState("Start");
 
+  const { role } = useSettingsContext();
+
   React.useEffect(() => {
     if (user == null) router.push("/login");
   }, [user]);
 
   async function handleChatCall(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = text;
+    const data = { role: role, message: text };
     const response = await fetch("/api/chatapi", {
       method: "POST",
       mode: "cors",
