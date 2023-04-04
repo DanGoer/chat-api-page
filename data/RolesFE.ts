@@ -1,2 +1,2 @@
 ["default", "Pirat", "Nikolaus"];
-const rolesFE = ["default", "Pirat", "Nikolaus"];
+export const rolesFE = ["default", "Pirat", "Nikolaus"];

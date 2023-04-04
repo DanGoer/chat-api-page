@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import { logOut, useAuthContext } from "@/context/AuthContext";
 import { useRouter } from "next/navigation";
+import SettingsCard from "@/components/settings/SettingsCard";
 
 function Chat() {
   const { user } = useAuthContext();
@@ -33,22 +34,25 @@ function Chat() {
   }
 
   return (
-    <h1>
-      {output}
-      Only logged in users can view this page
-      <button onClick={logOut}>logout</button>
-      <form onSubmit={(e) => handleChatCall(e)}>
-        <input
-          onChange={(e) => {
-            setText(e.target.value);
-          }}
-          type="text"
-          value={text}
-          placeholder={"Please enter your question"}
-        />
-        <button type="submit">submit</button>
-      </form>
-    </h1>
+    <>
+      <h1>
+        {output}
+        Only logged in users can view this page
+        <button onClick={logOut}>logout</button>
+        <form onSubmit={(e) => handleChatCall(e)}>
+          <input
+            onChange={(e) => {
+              setText(e.target.value);
+            }}
+            type="text"
+            value={text}
+            placeholder={"Please enter your question"}
+          />
+          <button type="submit">submit</button>
+        </form>
+      </h1>
+      <SettingsCard />
+    </>
   );
 }
 
