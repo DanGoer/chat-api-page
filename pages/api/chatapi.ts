@@ -1,4 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+
+import { roleHandler } from "@/utility/prompthandler";
 import type { NextApiRequest, NextApiResponse } from "next";
 const { Configuration, OpenAIApi } = require("openai");
 
@@ -11,6 +13,7 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   const { role, message } = req.body;
+  const rolePrompt = roleHandler(role);
 
   try {
     const configuration = new Configuration({
@@ -24,7 +27,7 @@ export default async function handler(
       messages: [
         {
           role: "user",
-          content: `Verhalte dich dich in der Konversation bitte der Rolle ${role} enstprechend und antworte auf diesen Text: ${message}`,
+          content: ` ${rolePrompt.prompt} und antworte auf diesen Text: ${message}`,
         },
       ],
     });

@@ -1,4 +1,4 @@
-const rolesBE = [
+export const rolesBE = [
   { role: "default", prompt: "" },
   {
     role: "Pirat",
