@@ -14,7 +14,7 @@ export default async function handler(
 ) {
   const { role, mood, message } = req.body;
   const rolePrompt = roleHandler(role);
-  const moodPrompt = moodHandler(role);
+  const moodPrompt = moodHandler(mood);
 
   try {
     const configuration = new Configuration({

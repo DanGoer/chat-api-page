@@ -1,5 +1,5 @@
-import Mood from "./Mood";
-import Role from "./Role";
+import Mood from "./mood";
+import Role from "./role";
 
 function SettingsCard() {
   return (

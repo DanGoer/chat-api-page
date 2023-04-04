@@ -32,7 +32,6 @@ function Chat() {
       body: JSON.stringify(data), // body data type must match "Content-Type" header
     });
     const newOutput = await response.json();
-    console.log(newOutput);
     setOutput(newOutput.answer.content);
   }
 
