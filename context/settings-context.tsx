@@ -5,7 +5,7 @@ export const SettingsContext = createContext<React.ReactNode | any>({});
 export const useSettingsContext = () => useContext(SettingsContext);
 
 export const SettingsContextProvider: any = ({ children }: any) => {
-  const [mood, setMood] = useState<any>("neutral");
+  const [mood, setMood] = useState<any>("default");
   const [role, setRole] = useState<string>("default");
 
   return (

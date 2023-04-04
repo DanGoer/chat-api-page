@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useSettingsContext } from "@/context/SettingsContext";
-import { rolesFE } from "@/data/RolesFE";
+import { useSettingsContext } from "@/context/settings-context";
+import { rolesFE } from "@/data/rolesFE";
 
 function Role() {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const { setRole } = useSettingsContext();
 
@@ -19,9 +19,7 @@ function Role() {
   return (
     <div>
       <h2>Wähle einen Charakter</h2>
-      <p>
-        Die Auswahl dews Charakters wird die Art der antworten beeinflussen.
-      </p>
+      <p>Die Auswahl des Charakters wird die Art der antworten beeinflussen.</p>
       <div>
         <button onClick={handleOpen}>Dropdown</button>
         {open ? (

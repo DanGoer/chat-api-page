@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import { logOut, useAuthContext } from "@/context/AuthContext";
+import { logOut, useAuthContext } from "@/context/auth-context";
 import { useRouter } from "next/navigation";
-import SettingsCard from "@/components/settings/SettingsCard";
-import { useSettingsContext } from "@/context/SettingsContext";
+import SettingsCard from "@/components/settings/settings-card";
+import { useSettingsContext } from "@/context/settings-context";
 
 function Chat() {
   const { user } = useAuthContext();
@@ -12,7 +12,7 @@ function Chat() {
   const [text, setText] = useState("");
   const [output, setOutput] = useState("Start");
 
-  const { role } = useSettingsContext();
+  const { role, mood } = useSettingsContext();
 
   React.useEffect(() => {
     if (user == null) router.push("/login");
@@ -20,7 +20,7 @@ function Chat() {
 
   async function handleChatCall(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = { role: role, message: text };
+    const data = { role: role, mood: mood, message: text };
     const response = await fetch("/api/chatapi", {
       method: "POST",
       mode: "cors",
