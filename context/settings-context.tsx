@@ -1,4 +1,4 @@
-import React, { useContext, useState, createContext } from "react";
+import React, { useContext, useState, createContext, useEffect } from "react";
 
 export const SettingsContext = createContext<React.ReactNode | any>({});
 
@@ -7,9 +7,16 @@ export const useSettingsContext = () => useContext(SettingsContext);
 export const SettingsContextProvider: any = ({ children }: any) => {
   const [mood, setMood] = useState<any>("default");
   const [role, setRole] = useState<string>("default");
+  const [customPrompts, setCustomPrompts] = useState([]);
+
+  useEffect(() => {
+    setCustomPrompts(JSON.parse(localStorage.getItem("customPrompts") || "[]"));
+  }, []);
 
   return (
-    <SettingsContext.Provider value={{ mood, setMood, role, setRole }}>
+    <SettingsContext.Provider
+      value={{ mood, setMood, role, setRole, customPrompts, setCustomPrompts }}
+    >
       {children}
     </SettingsContext.Provider>
   );

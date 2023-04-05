@@ -1,3 +1,4 @@
+import { moodsBE } from "@/data/moodsBE";
 import { rolesBE } from "@/data/rolesBE";
 
 export const roleHandler = (role: string) => {
@@ -5,5 +6,5 @@ export const roleHandler = (role: string) => {
 };
 
 export const moodHandler = (mood: string) => {
-  return rolesBE.filter((moodType) => moodType.role === mood)[0];
+  return moodsBE.filter((moodType) => moodType.mood === mood)[0];
 };
