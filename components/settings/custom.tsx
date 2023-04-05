@@ -24,8 +24,19 @@ function Custom() {
 
   function handleCustom(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const array = [{ title: customTitle, behaviour: customBehaviour }];
+    const array = [
+      ...customPrompts,
+      { title: customTitle, behaviour: customBehaviour },
+    ];
     localStorage.setItem("customPrompts", JSON.stringify(array));
+    setCustomPrompts(array);
+  }
+
+  function handleDelete(index: number) {
+    const changeArray = [...customPrompts];
+    changeArray.splice(index, 1);
+    localStorage.setItem("customPrompts", JSON.stringify(changeArray));
+    setCustomPrompts(changeArray);
   }
 
   return (
@@ -36,8 +47,11 @@ function Custom() {
       <button onClick={handleOpenCustomList}>Dropdown</button>
       {openCustomList ? (
         <ul className="menu">
-          {customPrompts.map((prompt: customPromptsI) => (
-            <li key={prompt.title}>{prompt.title}</li>
+          {customPrompts.map((prompt: customPromptsI, index: number) => (
+            <li key={prompt.title + index}>
+              {prompt.title}
+              <button onClick={() => handleDelete(index)}>löschen</button>
+            </li>
           ))}
         </ul>
       ) : null}
