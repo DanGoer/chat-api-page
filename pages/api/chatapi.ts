@@ -9,7 +9,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 const { Configuration, OpenAIApi } = require("openai");
 
 type Data = {
-  answer: string;
+  answer: { content: string };
 };
 
 export default async function handler(
@@ -19,8 +19,8 @@ export default async function handler(
   const { role, mood, custom, message } = req.body;
   const rolePrompt = roleHandler(role);
   const moodPrompt = moodHandler(mood);
-
-  try {
+  res.status(200).json({ answer: { content: "hallo es funktioniert" } });
+  /* try {
     const configuration = new Configuration({
       apiKey: process.env.OPENAI_API_KEY,
     });
@@ -42,5 +42,5 @@ export default async function handler(
     res.status(200).json({ answer: completion.data.choices[0].message });
   } catch (error: any) {
     res.status(400).json({ answer: error.message });
-  }
+  }*/
 }

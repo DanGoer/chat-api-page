@@ -42,6 +42,7 @@ function Custom() {
 
   function handleSelectCustom(prompt: customPromptsI) {
     setCustom(prompt);
+    setOpenCustomList(!openCustomList);
   }
 
   return (
@@ -50,6 +51,7 @@ function Custom() {
       <p>Hier kannst du eine eigene Persöhnlichkeit erstellen</p>
       <button onClick={() => handleOpenCreative()}>Kreativ</button>
       <button onClick={handleOpenCustomList}>Dropdown</button>
+      <h3>Ausgewählte selbsterstellte Persöhnlichkeit: {custom.title}</h3>
       {openCustomList ? (
         <ul className="menu">
           {customPrompts.map((prompt: customPromptsI, index: number) => (
