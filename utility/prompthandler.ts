@@ -8,3 +8,5 @@ export const roleHandler = (role: string) => {
 export const moodHandler = (mood: string) => {
   return moodsBE.filter((moodType) => moodType.mood === mood)[0];
 };
+
+export const customHandler = (custom: string) => {};

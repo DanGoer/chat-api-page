@@ -12,7 +12,7 @@ function Chat() {
   const [text, setText] = useState("");
   const [output, setOutput] = useState("Start");
 
-  const { role, mood } = useSettingsContext();
+  const { role, mood, custom } = useSettingsContext();
 
   React.useEffect(() => {
     if (user == null) router.push("/login");
@@ -20,7 +20,12 @@ function Chat() {
 
   async function handleChatCall(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = { role: role, mood: mood, message: text };
+    const data = {
+      role: role,
+      mood: mood,
+      custom: custom,
+      message: text,
+    };
     const response = await fetch("/api/chatapi", {
       method: "POST",
       mode: "cors",

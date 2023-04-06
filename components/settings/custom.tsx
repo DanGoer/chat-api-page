@@ -12,7 +12,8 @@ function Custom() {
   const [customTitle, setCustomTitle] = useState<string>("");
   const [customBehaviour, setCustomBehaviour] = useState<string>("");
 
-  const { customPrompts, setCustomPrompts } = useSettingsContext();
+  const { customPrompts, setCustomPrompts, custom, setCustom } =
+    useSettingsContext();
 
   function handleOpenCreative() {
     setOpenCreative(!openCreative);
@@ -39,6 +40,10 @@ function Custom() {
     setCustomPrompts(changeArray);
   }
 
+  function handleSelectCustom(prompt: customPromptsI) {
+    setCustom(prompt);
+  }
+
   return (
     <div>
       <h2>Individuell angepasste Prompts</h2>
@@ -48,8 +53,11 @@ function Custom() {
       {openCustomList ? (
         <ul className="menu">
           {customPrompts.map((prompt: customPromptsI, index: number) => (
-            <li key={prompt.title + index}>
-              {prompt.title}
+            <li
+              onClick={() => handleSelectCustom(prompt)}
+              key={prompt.title + index}
+            >
+              {prompt.title} {prompt.behaviour}
               <button onClick={() => handleDelete(index)}>löschen</button>
             </li>
           ))}

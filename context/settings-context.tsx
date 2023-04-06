@@ -8,6 +8,7 @@ export const SettingsContextProvider: any = ({ children }: any) => {
   const [mood, setMood] = useState<any>("default");
   const [role, setRole] = useState<string>("default");
   const [customPrompts, setCustomPrompts] = useState([]);
+  const [custom, setCustom] = useState<string>("");
 
   useEffect(() => {
     setCustomPrompts(JSON.parse(localStorage.getItem("customPrompts") || "[]"));
@@ -15,7 +16,16 @@ export const SettingsContextProvider: any = ({ children }: any) => {
 
   return (
     <SettingsContext.Provider
-      value={{ mood, setMood, role, setRole, customPrompts, setCustomPrompts }}
+      value={{
+        mood,
+        setMood,
+        role,
+        setRole,
+        customPrompts,
+        setCustomPrompts,
+        custom,
+        setCustom,
+      }}
     >
       {children}
     </SettingsContext.Provider>
